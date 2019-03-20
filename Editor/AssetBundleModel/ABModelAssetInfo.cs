@@ -3,6 +3,9 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.IMGUI.Controls;
+using UnityEngine.Assertions;
+using System.Linq;
+using AssetBundleBrowser.AssetBundleDataSource;
 
 namespace AssetBundleBrowser.AssetBundleModel
 {
@@ -111,7 +114,7 @@ namespace AssetBundleBrowser.AssetBundleModel
         }
         internal string bundleName
         { get { return System.String.IsNullOrEmpty(m_BundleName) ? "auto" : m_BundleName; } }
-        
+
         internal Color GetColor()
         {
             if (System.String.IsNullOrEmpty(m_BundleName))
@@ -172,7 +175,7 @@ namespace AssetBundleBrowser.AssetBundleModel
                 }
                 message = message.Substring(0, message.Length - 2);//remove trailing comma.
                 messages.Add(new MessageSystem.Message(message, MessageType.Info));
-            }            
+            }
 
             if (m_dependencies != null && m_dependencies.Count > 0)
             {
@@ -183,6 +186,10 @@ namespace AssetBundleBrowser.AssetBundleModel
                     if (dependent.bundleName != bundleName)
                     {
                         message += dependent.bundleName + " : " + dependent.displayName + "\n";
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\fucv\Desktop\test.txt", true))
+                        {
+                            file.WriteLine(dependent.bundleName);//直接追加文件末尾，换行
+                        }
                     }
                 }
                 if (string.IsNullOrEmpty(message) == false)
@@ -191,7 +198,7 @@ namespace AssetBundleBrowser.AssetBundleModel
                     message = message.Substring(0, message.Length - 1);//remove trailing line break.
                     messages.Add(new MessageSystem.Message(message, MessageType.Info));
                 }
-            }            
+            }
 
             messages.Add(new MessageSystem.Message(displayName + "\n" + "Path: " + fullAssetName, MessageType.Info));
 
