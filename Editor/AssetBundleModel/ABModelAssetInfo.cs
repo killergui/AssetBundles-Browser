@@ -6,6 +6,7 @@ using UnityEditor.IMGUI.Controls;
 using UnityEngine.Assertions;
 using System.Linq;
 using AssetBundleBrowser.AssetBundleDataSource;
+using System.Collections;
 
 namespace AssetBundleBrowser.AssetBundleModel
 {
@@ -181,15 +182,28 @@ namespace AssetBundleBrowser.AssetBundleModel
             {
                 var message = string.Empty;
                 var sortedDependencies = m_dependencies.OrderBy(d => d.bundleName);
+				Debug.LogError(bundleName);
+				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Administrator\Desktop\test.txt", true))
+                        {
+                            file.WriteLine("-----------资源包{0}----------------", bundleName);//直接追加文件末尾，换行
+                        }
+                List<string> tmp = new List<string>();
                 foreach (var dependent in sortedDependencies)
                 {
                     if (dependent.bundleName != bundleName)
                     {
                         message += dependent.bundleName + " : " + dependent.displayName + "\n";
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\fucv\Desktop\test.txt", true))
+
+                        if (dependent.bundleName != "auto" && !tmp.Contains(dependent.bundleName))
                         {
-                            file.WriteLine(dependent.bundleName);//直接追加文件末尾，换行
+                            tmp.Add(dependent.bundleName);
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Administrator\Desktop\test.txt", true))
+                            {
+                                file.WriteLine(dependent.bundleName);//直接追加文件末尾，换行
+                            }
                         }
+
+                        
                     }
                 }
                 if (string.IsNullOrEmpty(message) == false)
