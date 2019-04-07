@@ -1,0 +1,367 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SmallJson</name>
+    </assembly>
+    <members>
+        <member name="T:SmallJson.JParser">
+            <summary>
+            解析器
+            </summary>
+        </member>
+        <member name="M:SmallJson.JParser.Parse(System.String)">
+            <summary>
+            从字符串解析Json对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JParser.Parse(System.Collections.Generic.Stack{SmallJson.JToken})">
+            <summary>
+            解析标识
+            </summary>
+        </member>
+        <member name="M:SmallJson.JParser.GetPropertyName(System.Collections.Generic.Stack{SmallJson.JToken},System.Int64)">
+            <summary>
+            获取属性名
+            </summary>
+        </member>
+        <member name="T:SmallJson.TokenType">
+            <summary>
+            标识类型
+            </summary>
+        </member>
+        <member name="T:SmallJson.JToken">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="M:SmallJson.JToken.#ctor(SmallJson.TokenType,System.Int64)">
+            <summary>
+            一个标识对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JToken.AddChar(System.Char)">
+            <summary>
+            添加一个字符
+            </summary>
+        </member>
+        <member name="M:SmallJson.JToken.GetString">
+            <summary>
+            获取自符串
+            </summary>
+        </member>
+        <member name="F:SmallJson.JToken.Seek">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="F:SmallJson.JToken.TType">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:SmallJson.JToken.mStringBuilder">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.String2Unicode(System.String)">
+            <summary>  
+            字符串转Unicode  
+            </summary>  
+            <param name="source">源字符串</param>  
+            <returns>Unicode编码后的字符串</returns>  
+        </member>
+        <member name="M:SmallJson.JUtil.SerializeString(System.String)">
+            <summary>
+            字符串序列化
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.DeserializeString(System.String)">
+            <summary>
+            符串解码
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.ToString(System.Object)">
+            <summary>
+            转成字符串格式
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.IsValueType(System.Type)">
+            <summary>
+            是否是值类型
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            生成一个对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.CanInstance(System.Type)">
+            <summary>
+            是否可以实例化
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.GetSerializableProperties(System.Type)">
+            <summary>
+            获取可序列化的属性
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.GetSerializableFields(System.Type)">
+            <summary>
+            获取可序列化的属性
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.SetProperty(System.Type,System.String,System.Object,System.Object)">
+            <summary>
+            设置属性值
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.GetProperty(System.Type,System.String,System.Object,System.Object@)">
+            <summary>
+            获取属性值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SmallJson.JUtil.IsListType(System.Type)">
+            <summary>
+            是否IList类型
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SmallJson.JUtil.IsListGenericType(System.Type)" -->
+        <member name="M:SmallJson.JUtil.IsStringType(System.Type)">
+            <summary>
+            是否是字符串形式
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.IsNumberType(System.Type)">
+            <summary>
+            是否是数字形式
+            </summary>
+        </member>
+        <member name="M:SmallJson.JUtil.IsNameValueCollectionType(System.Type)">
+            <summary>
+            是否是NameValueCollection类型
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SmallJson.JUtil.IsValueKeyDictionaryGenericType(System.Type)" -->
+        <!-- Badly formed XML comment ignored for member "M:SmallJson.JUtil.IsDictionaryGenericType(System.Type)" -->
+        <!-- Badly formed XML comment ignored for member "M:SmallJson.JUtil.IsKeyValuePairGenericType(System.Type)" -->
+        <member name="M:SmallJson.JUtil.IsIEnumerableType(System.Type)">
+            <summary>
+            是否是IEnumerable 类型
+            </summary>
+        </member>
+        <member name="T:SmallJson.JArray">
+            <summary>
+            数组
+            </summary>
+        </member>
+        <member name="P:SmallJson.JArray.Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="P:SmallJson.JArray.Item(System.Int32)">
+            <summary>
+            获取值
+            </summary>
+        </member>
+        <member name="M:SmallJson.JArray.ToJson">
+            <summary>
+            转JSON
+            </summary>
+        </member>
+        <member name="M:SmallJson.JArray.Add(SmallJson.JValue)">
+            <summary>
+            添加一个值
+            </summary>
+        </member>
+        <member name="M:SmallJson.JArray.ToDeserialize(System.Type)">
+            <summary>
+            序列化对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JArray.AddFront(SmallJson.JValue)">
+            <summary>
+            添加一个值
+            </summary>
+        </member>
+        <member name="F:SmallJson.JArray.mValues">
+            <summary>
+            值列表
+            </summary>
+        </member>
+        <member name="T:SmallJson.JObject">
+            <summary>
+            对象
+            </summary>
+        </member>
+        <member name="P:SmallJson.JObject.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="P:SmallJson.JObject.Item(System.String)">
+            <summary>
+            获取一个值
+            </summary>
+        </member>
+        <member name="M:SmallJson.JObject.GetEnumerator">
+            <summary>
+            遍历对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JObject.ContainKey(System.String)">
+            <summary>
+            是否包含键
+            </summary>
+        </member>
+        <member name="M:SmallJson.JObject.ToJson">
+            <summary>
+            转为JSON格式
+            </summary>
+        </member>
+        <member name="M:SmallJson.JObject.Add(System.String,SmallJson.JValue)">
+            <summary>
+            添加一个值
+            </summary>
+        </member>
+        <member name="M:SmallJson.JObject.AddFront(System.String,SmallJson.JValue)">
+            <summary>
+            添加一个值
+            </summary>
+        </member>
+        <member name="M:SmallJson.JObject.ToDeserialize(System.Type)">
+            <summary>
+            序列化对象
+            </summary>
+        </member>
+        <member name="F:SmallJson.JObject.mPropertys">
+            <summary>
+            属性
+            </summary>
+        </member>
+        <member name="F:SmallJson.JObject.mSortPropertys">
+            <summary>
+            排序的属性列表
+            </summary>
+        </member>
+        <member name="T:SmallJson.ISerialized">
+            <summary>
+            序列化对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.ISerialized.ToJson">
+            <summary>
+            转为JSON格式
+            </summary>
+        </member>
+        <member name="M:SmallJson.ISerialized.ToDeserialize(System.Type)">
+            <summary>
+            反序列化出对象
+            </summary>
+        </member>
+        <member name="T:SmallJson.JSerializer">
+            <summary>
+            序列化工具
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.SerializeToString(System.Object)">
+            <summary>
+            序列化为字符串
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.SerializeToJArray(System.Object)">
+            <summary>
+            序列化为JArray对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.SerializeToJObject(System.Object)">
+            <summary>
+            序列化为JObject对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.Deserialize``1(System.String)">
+            <summary>
+            从Json字符串反序列化
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.DeserializeToArray(System.String)">
+            <summary>
+            从Json字符串反序列化出JArray
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.DeserializeToObject(System.String)">
+            <summary>
+            从Json字符串反序列化出JObject
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.ConvertToJValue(System.Object)">
+            <summary>
+            转为JValue
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.ConvertListToArray(System.Collections.IList)">
+            <summary>
+            转IList为
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.ConvertIEnumerableToArray(System.Collections.IEnumerable)">
+            <summary>
+            转IEnumerable为JArray
+            </summary>
+        </member>
+        <member name="M:SmallJson.JSerializer.ConvertNameValueCollectionToObject(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            转NameValueCollection为JObject
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SmallJson.JSerializer.ConvertDictionaryGenericToObject(System.Object)" -->
+        <!-- Badly formed XML comment ignored for member "M:SmallJson.JSerializer.ConvertKeyValuePairGenericToObject(System.Object)" -->
+        <member name="M:SmallJson.JSerializer.ConvertToObject(System.Object)">
+            <summary>
+            转object为JObject
+            </summary>
+        </member>
+        <member name="T:SmallJson.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="T:SmallJson.JValue">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="F:SmallJson.JValue.ValueType">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="M:SmallJson.JValue.#ctor(SmallJson.ValueType,System.Object)">
+            <summary>
+            构建一个JValue对象
+            </summary>
+        </member>
+        <member name="M:SmallJson.JValue.ToJson">
+            <summary>
+            转为Json格式
+            </summary>
+        </member>
+        <member name="M:SmallJson.JValue.ToDeserialize(System.Type)">
+            <summary>
+            反序列化出一个对象
+            </summary>
+        </member>
+        <member name="P:SmallJson.JValue.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="F:SmallJson.JValue.mValue">
+            <summary>
+            值
+            </summary>
+        </member>
+    </members>
+</doc>

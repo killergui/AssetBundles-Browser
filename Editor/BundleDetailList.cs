@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using AssetBundleBrowser.AssetBundleModel;
 using UnityEditor.IMGUI.Controls;
+using System;
 
 namespace AssetBundleBrowser
 {
@@ -80,6 +81,7 @@ namespace AssetBundleBrowser
         const string k_DependencyEmpty = k_DependencyHeader + " - None";
         const string k_MessageHeader = "Messages:";
         const string k_MessageEmpty = k_MessageHeader + " - None";
+        Dictionary<string, string> savedRes = new Dictionary<string, string>();
         private const string k_ReferencedPrefix = "- ";
 
 
@@ -194,7 +196,7 @@ namespace AssetBundleBrowser
                 TogglePathTreeViewItem pathItem = item as TogglePathTreeViewItem;
                 if( pathItem != null )
                 {
-                    Object o = AssetDatabase.LoadAssetAtPath<Object>( pathItem.Path );
+                    UnityEngine.Object o = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(pathItem.Path);
                     if( o != null )
                     {
                         Selection.activeObject = o;
@@ -208,6 +210,12 @@ namespace AssetBundleBrowser
         {
             var itemName = bundle.m_Name.fullNativeName;
             var bunRoot = new TreeViewItem(itemName.GetHashCode(), 0, itemName);
+            Debug.Log(itemName);
+            List<string> valueList = new List<string>();
+            if (Cookie.GetValue(itemName) != string.Empty)
+            {
+                valueList = new List<string>(Cookie.GetValue(itemName).Split(';'));
+            }
 
             var str = itemName + k_SizeHeader;
             var sz = new TreeViewItem(str.GetHashCode(), 1, k_SizeHeader + bundle.TotalSize());
@@ -218,9 +226,18 @@ namespace AssetBundleBrowser
             if(depList.Count > 0)
             {
                 dependency.displayName = k_DependencyHeader;
+
                 foreach (var dep in bundle.GetBundleDependencies())
                 {
                     str = itemName + dep.m_BundleName;
+
+                    if (!valueList.Contains(dep.m_BundleName))
+                    {
+                        valueList.Add(dep.m_BundleName);
+                        var result = String.Join(";", valueList.ToArray());
+                        Cookie.SetValue(itemName, result);
+                    }
+
                     TreeViewItem newItem = new TreeViewItem( str.GetHashCode(), 2, dep.m_BundleName );
                     newItem.icon = Model.GetBundleIcon();
                     dependency.AddChild(newItem);

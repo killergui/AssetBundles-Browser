@@ -182,26 +182,26 @@ namespace AssetBundleBrowser.AssetBundleModel
             {
                 var message = string.Empty;
                 var sortedDependencies = m_dependencies.OrderBy(d => d.bundleName);
-				Debug.LogError(bundleName);
-				using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Administrator\Desktop\test.txt", true))
-                        {
-                            file.WriteLine("-----------资源包{0}----------------", bundleName);//直接追加文件末尾，换行
-                        }
-                List<string> tmp = new List<string>();
+                //Debug.LogError(bundleName);
+                //using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"ResDependencies.txt", true))
+                //        {
+                //            file.WriteLine("-----------资源包{0}----------------", bundleName);//直接追加文件末尾，换行
+                //        }
+                //List<string> tmp = new List<string>();
                 foreach (var dependent in sortedDependencies)
                 {
                     if (dependent.bundleName != bundleName)
                     {
                         message += dependent.bundleName + " : " + dependent.displayName + "\n";
 
-                        if (dependent.bundleName != "auto" && !tmp.Contains(dependent.bundleName))
-                        {
-                            tmp.Add(dependent.bundleName);
-                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Administrator\Desktop\test.txt", true))
-                            {
-                                file.WriteLine(dependent.bundleName);//直接追加文件末尾，换行
-                            }
-                        }
+                        //if (dependent.bundleName != "auto" && !tmp.Contains(dependent.bundleName))
+                        //{
+                        //    tmp.Add(dependent.bundleName);
+                        //    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"ResDependencies.txt", true))
+                        //    {
+                        //        file.WriteLine(dependent.bundleName);//直接追加文件末尾，换行
+                        //    }
+                        //}
 
                         
                     }
